@@ -1,0 +1,15 @@
+import time
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(18, GPIO.OUT)
+GPIO.setup(23, GPIO.IN)
+
+def open_door():
+    GPIO.output(18, GPIO.HIGH)
+    time.sleep(5)
+    GPIO.output(18, GPIO.LOW)
+
+while True:
+    if GPIO.input(23):
+        open_door()
